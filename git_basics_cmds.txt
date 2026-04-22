@@ -178,4 +178,4 @@ git push=upload
 git pull=download +marge 
 git fetch =download only
 
-/*      Conflict change from main     */
+/*       Resolved: main + branch changes   */

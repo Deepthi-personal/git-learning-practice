@@ -1,1 +1,2 @@
 My Git Learning Journey
+Learning git diff and commit

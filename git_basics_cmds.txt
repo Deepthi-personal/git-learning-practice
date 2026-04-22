@@ -1,0 +1,181 @@
+GIT COMPLETE NOTES (FINAL)
+
+BASIC FLOW:
+Working → Staging → Commit → GitHub
+
+    1. SETUP COMMANDS
+git config --global user.name "Your Name"
+git config --global user.email "your@email.com"
+Meaning: Set your identity
+
+    2. CREATE REPOSITORY
+git init
+Meaning: initializes Git in a project by creating a .git folder, which is used to track and manage version history
+git clone
+Meaning: Copy project from GitHub
+
+    3. CHECK STATUS
+git status
+Shows:
+    • modified files
+    • staged files
+    • untracked files
+Example:
+Step 1: Create file
+touch test.cpp
+git status
+Untracked files:
+test.cpp
+Git sees file, but not tracking yet
+
+Step 2: Add file
+git add test.cpp
+git status
+Changes to be committed:
+new file: test.cpp
+File is ready to commit
+
+Step 3: Modify file
+Edit test.cpp
+git status
+Changes not staged for commit:
+modified: test.cpp
+File changed but NOT added again
+
+Step 4: Commit
+git add test.cpp
+git commit -m "Added test file"
+
+    4. STAGING AREA
+git add file
+Meaning: add specific file
+git add .
+Meaning: add all files (current folder) this is adding all includes files in folder like:(modified files,new files,deleted files)
+git add -A
+Meaning: add all files (entire repo) 
+git reset file
+Meaning: remove file from staging
+Staging = ready to commit
+
+.gitignore
+Meaning: Ignore unwanted files(Ignore these files — don’t track them, don’t add them, don’t commit them.)
+Example:
+build/
+*.log
+*.bin
+If already added:
+git rm --cached file
+f you added the all files before doing .gitignore after this cmd is not working so for this we need to run :git rm --cached filename  . then we will do .gitignore 
+
+    5. COMMIT
+git commit -m "your message"
+Meaning:
+    • Save changes locally
+    • Message = what you did
+
+    6. CHECK CHANGES
+git diff
+Meaning: show not staged changes :Shows what changes you made in code(Before commit (to verify changes)
+git diff --staged
+Meaning: show staged changed(Show me what I am going to commit)
+git diff HEAD    -->your current changes and last commit changes 
+    7. HISTORY
+git log
+Meaning: show commit history(To check previous changes,Debug issues) 
+    8. BRANCHING
+git branch
+Meaning: finding the list of branches  (* ->this means current branch)
+git branch feature1 
+Meaning: creating new  branch 
+git switch -c feature1
+Meaning: create + switch
+git switch feature1
+Meaning: switch branch
+(or)
+git checkout feature1   --> switch branch
+
+git branch -d feature1
+Meaning: delete branch
+
+    9. MERGE
+git switch main  -->Go to main branch
+git merge feature1
+Meaning: Add feature1 changes into main
+
+MERGE CONFLICT
+What is a Merge Conflict?
+Two people (or two branches) changed the same file and same lines -->Git gets confused
+Fix:
+after resolve the conflict
+git add file
+git commit -m "Resolved conflict"
+
+    10. REMOTE COMMANDS
+git remote -v
+Meaning: check remote (Shows which GitHub repo your project is connected to)
+git remote add origin
+Meaning: connect repo (Connect your local project to GitHub)
+git push
+Meaning: Upload your local commits → GitHub
+cmd: git push origin main
+When we use :After commit,When you want to share code
+git pull   -->  Get latest changes from GitHub
+Meaning: download + merge
+git fetch
+Meaning: download only
+
+    11. STASH
+git stash
+Meaning: save temporary work
+git stash pop
+Meaning: restore + remove
+git stash apply
+Meaning: restore only
+git stash list
+Meaning: view stash
+
+    12. UNDO
+git restore file
+Meaning: Undo changes in a file,Bring file back to last committed version
+git reset file
+Meaning: Remove file from staging,But keep your changes
+git reset --hard
+Meaning: delete all changes(Remove ALL changes,Reset project to last commit)
+git revert
+Meaning: undo commit safely
+
+    13. FILE OPERATIONS
+git rm file
+Meaning: delete file
+git mv old new
+Meaning: rename file
+
+    14. REBASE
+git rebase main
+Meaning: move commits on top (clean history)
+
+    15. GITHUB WORKFLOW
+push branch → create PR → review → merge
+
+    16. DAILY WORKFLOW
+git pull
+git switch -c feature/work
+(do changes)
+git status
+git add .
+git commit -m "message"
+git push origin feature/work
+
+SHORTCUT
+pull → branch → code → add → commit → push
+
+FINAL SUMMARY
+Git = track changes
+add = select
+commit = save
+git remote =connection
+git push=upload
+git pull=download +marge 
+git fetch =download only
+
+
